@@ -19,8 +19,26 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	ball1 = new Bob(400,350,10);
-	rope1 = new Rope({x:400,y:200},ball1.body);
+	//roofObject
+	roofObject=new Roof(width/2,height/4,width/5,20);
+
+	bobDiameter=40;
+
+	startBobPositionX=width/2;
+	startBobPositionY=height/4+500;
+
+
+	//craete the bob objects
+	bobObject1=new Bob(startBobPositionX-bobDiameter*2,startBobPositionY,bobDiameter);
+
+
+
+
+	//create the rope objects
+	rope1=new Rope(bobObject1.body,roofObject.body,-bobDiameter*2, 0)
+
+
+
 
 
 	Engine.run(engine);
@@ -33,11 +51,12 @@ function draw() {
   background("white");
 
   Engine.update(engine);
-
-  ball1.display();
-  rope1.display();
-
- 
+  
+	  roofObject.display();
+	  	
+	bobObject1.display();
+	
+	rope1.display();
 }
 
 
